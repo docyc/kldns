@@ -22,7 +22,7 @@ class Domain extends Model
         $gid = $gid ? $gid : (Auth::check() ? Auth::user()->gid : 0);
         $query->where('groups', '0');
         if ($gid > 0) {
-            $query->orWhereRaw(DB::raw("FIND_IN_SET('{$gid}',groups)"));
+            $query->orWhereRaw(DB::raw("FIND_IN_SET('{$gid}',`groups`)"));
         }
     }
 
